@@ -1,0 +1,49 @@
+\frametitle{Sets}\framesubtitle {Well-Known}
+^^I\hfill\\
+^^I\begin{minipage}[t]{0.3\textwidth}
+^^I^^I\vspace{0pt}
+^^I^^I\begin{itemize}
+^^I^^I^^I\item \(\cAquaBlue{ \set{} } \): \verb!\set{}!
+^^I^^I^^I\item \(\cAquaBlue{ \suchthat } \): \verb!\suchthat!
+^^I^^I^^I\item \(\cAquaBlue{ \setU } \): \verb!\setU!
+^^I^^I^^I\item \(\cAquaBlue{ \setS } \): \verb!\setS!
+^^I^^I^^I\item \(\cAquaBlue{ \setComp } \): \verb!\setComp!
+^^I^^I^^I\item \(\cAquaBlue{ \setN } \): \verb!\setN!
+^^I^^I^^I\item \(\cAquaBlue{ \setNs } \): \verb!\setNs!
+^^I^^I^^I\item \(\cAquaBlue{ \setNi{\ge 4} } \): \verb!\setNi{\ge 4}!
+^^I^^I^^I\item \(\cAquaBlue{ \setW } \): \verb!\setW!
+^^I^^I\end{itemize}
+^^I\end{minipage}
+^^I\begin{minipage}[t]{0.3\textwidth}
+^^I^^I\vspace{0pt}
+^^I^^I\begin{itemize}
+^^I^^I^^I\item \(\cAquaBlue{ \setZ } \): \verb!\setZ!
+^^I^^I^^I\item \(\cAquaBlue{ \setZp } \): \verb!\setZp!
+^^I^^I^^I\item \(\cAquaBlue{ \setZn } \): \verb!\setZn!
+^^I^^I^^I\item \(\cAquaBlue{ \setZs } \): \verb!\setZs!
+^^I^^I^^I\item \(\cAquaBlue{ \setZi{\ge 4} } \): \verb!\setZi{\ge 4}!
+^^I^^I^^I\item \(\cAquaBlue{ \setO } \): \verb!\setO!
+^^I^^I^^I\item \(\cAquaBlue{ \setE } \): \verb!\setE!
+^^I^^I^^I\item \(\cAquaBlue{ \setP } \): \verb!\setP!
+^^I^^I^^I\item \(\cAquaBlue{ \setSquares } \): \verb!\setSquare!
+^^I^^I^^I\item \(\cAquaBlue{ \setCubes } \): \verb!\setCubes!
+^^I^^I\end{itemize}
+^^I\end{minipage}
+^^I\begin{minipage}[t]{0.3\textwidth}
+^^I^^I\vspace{0pt}
+^^I^^I\begin{itemize}
+^^I^^I^^I\item \(\cAquaBlue{ \setQ } \): \verb!\setQ!
+^^I^^I^^I\item \(\cAquaBlue{ \setQp } \): \verb!\setQp!
+^^I^^I^^I\item \(\cAquaBlue{ \setQn } \): \verb!\setQn!
+^^I^^I^^I\item \(\cAquaBlue{ \setQs } \): \verb!\setQs!
+^^I^^I^^I\item \(\cAquaBlue{ \setQi{\ge 4} } \): \verb!\setQi{\ge 4}!
+^^I^^I^^I\item \(\cAquaBlue{ \setR } \): \verb!\setR!
+^^I^^I^^I\item \(\cAquaBlue{ \setRp } \): \verb!\setRp!
+^^I^^I^^I\item \(\cAquaBlue{ \setRn } \): \verb!\setRn!
+^^I^^I^^I\item \(\cAquaBlue{ \setRs } \): \verb!\setRs!
+^^I^^I^^I\item \(\cAquaBlue{ \setRi{\ge 4} } \): \verb!\setQi{\ge 4}!
+^^I^^I^^I\item \(\cAquaBlue{ \setC } \): \verb!\setR!
+^^I^^I\end{itemize}
+^^I\end{minipage}
+^^I\hfill
+

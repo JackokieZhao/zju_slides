@@ -1,0 +1,89 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{alfredssonMatematik5000Kurs2021}{book}{}
+      \name{author}{2}{}{%
+        {{hash=65034995db80110e1793c0643c6cec61}{%
+           family={Alfredsson},
+           familyi={A\bibinitperiod},
+           given={Lena},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a718750c0ef548739566ed6ec59da727}{%
+           family={Heikne},
+           familyi={H\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \strng{fullhash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \strng{bibnamehash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \strng{authorbibnamehash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \strng{authornamehash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \strng{authorfullhash}{b5a4ca625a4486ba1a6a79509a4f4c4e}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-91-27-45820-8}
+      \field{note}{{OCLC}: 1251871262}
+      \field{shorttitle}{Matematik 5000+ Kurs 1b L?}
+      \field{title}{Matematik 5000+ Kurs 1b Lärobok Digital.}
+      \field{year}{2021}
+      \field{dateera}{ce}
+    \endentry
+    \entry{raynerCompleteMathematicsCambridge2018}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8615f22422251546d27a2dc6c3ae52b0}{%
+           family={Rayner},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{8615f22422251546d27a2dc6c3ae52b0}
+      \strng{fullhash}{8615f22422251546d27a2dc6c3ae52b0}
+      \strng{bibnamehash}{8615f22422251546d27a2dc6c3ae52b0}
+      \strng{authorbibnamehash}{8615f22422251546d27a2dc6c3ae52b0}
+      \strng{authornamehash}{8615f22422251546d27a2dc6c3ae52b0}
+      \strng{authorfullhash}{8615f22422251546d27a2dc6c3ae52b0}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{Fifth edition}
+      \field{isbn}{978-0-19-842507-6}
+      \field{pagetotal}{493}
+      \field{series}{Aspire succeed progress}
+      \field{shorttitle}{Complete mathematics for Cambridge {IGCSE}}
+      \field{title}{Complete mathematics for Cambridge {IGCSE}: Extended}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \keyw{Mathematics,International General Certificate of Secondary Education,Problems,exercises,etc,Study guides}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,622 @@
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% BEAMER sthlmNord THEME
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Theme Options   
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\ProvidesPackage{beamerthemezju}
+\mode<presentation>
+
+
+% > > > Document Class options
+% section pages are suppressed by default
+% use sectionpages option to enable them
+\newif\if@dosectionpages
+\@dosectionpagesfalse
+\DeclareOptionBeamer{sectionpages}{\@dosectionpagestrue}
+% bibliography is suppressed by default
+% use bibref option to enable it
+\newif\if@dobibref
+\@dobibreffalse
+\DeclareOptionBeamer{bibref}{\@dobibreftrue}
+% minted code highlighting is suppressed by default
+% until Overleaf provides the pygments update to provide
+% the nord color theme, two options will be available
+% minted
+\newif\if@docodeminted
+\@docodemintedfalse
+\DeclareOptionBeamer{codeminted}{\@docodemintedtrue}
+% overleaf
+\newif\if@docodemintedoverleaf
+\@docodemintedoverleaffalse
+\DeclareOptionBeamer{codemintedoverleaf}{\@docodemintedoverleaftrue}
+% dark mode version is default
+% this can be changed to light mode.
+\DeclareOptionBeamer{mode}{\def\beamer@zjutheme@mode{#1}}
+\ExecuteOptionsBeamer{mode=dark}  %Default Dark Mode
+\ProcessOptionsBeamer
+\def\beamer@zjutheme@darkmode{dark}
+\def\beamer@zjutheme@lightmode{light}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Required Packages   
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage{tikz}
+\RequirePackage{ragged2e}
+\RequirePackage{metalogo}
+\RequirePackage{zjutables}
+\RequirePackage{currfile}
+\RequirePackage[yyyymmdd]{datetime}
+\RequirePackage{verbatim}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes.symbols}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\RequirePackage{animate}
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Set Chinese fonts.   
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage[slantfont,boldfont]{xeCJK}
+\RequirePackage{fontspec}
+% \setCJKmainfont{SimSun}
+% \setCJKmainfont{思源黑体 Normal}
+\setmainfont{Source Han Sans SC}
+% \setmainfont{SimSun}
+% \setsansfont{SimSun}
+% \setmonofont{WenQuanYi Zen Hei Mono}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Modular Use with Other Classes   
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+% > > > Table Support 
+\NewTableCommand{\tablepagebreak}{\pagebreak}
+
+% > > > EXAM cls EnvUplevel support so no need to copy past problems to create
+% a slide.
+\newenvironment{EnvUplevel}
+{\par\bigskip\vbox\bgroup%
+  % We set \leftskip to provide the correct left margin for whatever
+  % is inside of the environment:
+  \leftskip=\@totalleftmargin
+  \advance\leftskip-\leftmargin%
+  % We adjust \@totalleftmargin (and line width?) in case there's a
+  % solution environment inside of the environment:
+  \advance\@totalleftmargin-\leftmargin%
+  \advance\linewidth\leftmargin%
+}
+{\egroup\nobreak}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Color Theme (DARK MODE DEFAULT)  
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage{zjucolor}
+
+\ifx\beamer@zjutheme@mode\beamer@zjutheme@darkmode%
+
+  %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  %   Color Theme (LIGHT MODE)  
+  %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\else%
+  \ifx\beamer@zjutheme@mode\beamer@zjutheme@lightmode%
+    % > > >  Global Definitions
+    \setbeamercolor*{normal text}{fg=nordZero}
+    \setbeamercolor*{background canvas}{bg=nordSix}
+    \setbeamercolor*{structure}{fg=nordZero}
+
+    % > > >  Title Page
+    \setbeamercolor*{title}{fg=nordTwo}
+    \setbeamercolor*{subtitle}{fg=nordThree}
+
+    \setbeamercolor*{author title}{fg=nordThree}
+    \setbeamercolor*{author}{fg=nordTen}
+
+    \setbeamercolor*{institute title}{fg=nordThree}
+    \setbeamercolor*{institute}{fg=nordTen}
+
+    \setbeamercolor*{date}{fg=nordThree}
+
+    \setbeamercolor{nordOneBox}{bg=nordOne}
+    \setbeamercolor{nordTwoBlueBox}{bg=nordEight}
+
+    % > > >  Text
+    \setbeamercolor*{example text}{fg=nordSeven}
+    \setbeamercolor*{alerted text}{fg=nordEleven}
+
+    % > > >  Footnotes
+    \setbeamercolor*{footnote mark}{fg=nordNine}
+    \setbeamercolor*{footer}{fg=nordThree}
+    \setbeamercolor*{footer text}{fg=nordThree}
+    \setbeamercolor*{footnote book}{fg=nordEight}
+
+
+    % > > >  Frame Structure
+    \setbeamercolor*{section in head/foot}{fg=nordOne, bg=nordTwo}
+    \setbeamercolor*{page number in head/foot}{fg=nordOne, bg=white}
+
+    \setbeamercolor*{header primary}{bg=}
+    \setbeamercolor*{frame title}{fg=zjuBlue}
+    \setbeamercolor*{frame subtitle}{fg=nordTwo}
+    \setbeamercolor*{frame mark}{fg=nordEight}
+
+    % > > >  Lists
+    %\setbeamercolor*{itemize item}{fg=nordTen}
+    %\setbeamercolor*{itemize subitem}{fg=nordTen}
+    %\setbeamercolor*{itemize subsubitem}{fg=Ten}
+    \setbeamertemplate{itemize item}{\cDarkBlue{\(\circledcirc\)}}
+    \setbeamertemplate{itemize subitem}{\cDarkBlue{\(\bullet\)}}
+    \setbeamertemplate{itemize subsubitem}{\cDarkBlue{\(\triangleright\)}}
+    \setbeamercolor*{enumerate item}{fg=nordTen}
+    \setbeamercolor*{enumerate subitem}{fg=nordTen}
+    \setbeamercolor*{enumerate subsubitem}{fg=nordTen}
+    \setbeamercolor*{description item}{fg=nordTen}
+    \setbeamercolor*{itemize/enumerate body}{fg=nordZero}
+    \setbeamercolor*{itemize/enumerate subbody}{fg=nordZero}
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=nordZero}
+    \setbeamercolor*{description body}{fg=nordZero}
+    
+    % > > >  Figures
+    \setbeamercolor*{caption name}{fg=nordNine}
+
+    % > > >  Table of Contents
+    \setbeamercolor*{section in toc}{fg=nordTen}
+    \setbeamercolor*{subsection in toc}{fg=nordNine}
+
+    % > > >  Section Page
+    \setbeamercolor*{section page}{bg=nordSix,fg=nordTen}
+    \setbeamercolor*{subsection page}{bg=nordSix,fg=nordNine}
+
+    % > > > Code Blocks with Minted
+    \setbeamercolor{sthmlnord_codeblock}{fg=nordFour,bg=nordZero}
+    \setbeamercolor{sthmlnord_captionblock}{fg=nordOne,bg=nordEight}
+
+    % > > >  Default block
+    \setbeamercolor{block title}{bg=nordOne,fg=nordFive}
+    \setbeamercolor{block body}{bg=nordFive, fg=nordTwo}
+    \setbeamercolor{block title alerted}{bg=nordEleven, fg=nordFive}
+    \setbeamercolor{block body alerted}{bg=nordFive, fg=nordTwo}
+    \setbeamercolor{block title example}{bg=nordSeven, fg=nordFive}
+    \setbeamercolor{block body example}{bg=nordFive, fg=nordTwo}
+
+    % > > >  Bibliography
+    \setbeamercolor*{bibliography entry author}{fg=nordTwo}
+    \setbeamercolor*{bibliography entry title}{fg=nordTwo}
+    \setbeamercolor*{bibliography entry location}{fg=nordTwo}
+    \setbeamercolor*{bibliography entry note}{fg=nordTwo}
+
+    % > > > Math Environments 
+    \newcommand{\prob}{\cnordThree{\faFire} \cnordZero{\textbf{Problem:}\enskip}}
+    \newcommand{\soln}{\cnordThree{\faSignature} \cnordZero{\textbf{Solution:} \enskip}}
+    \newcommand{\an}{\cnordThree{\faSignature} \cnordZero{\textbf{Answer:} \enskip}}
+    \newcommand{\ans}{\cnordThree{\faSignature} \cnordZero{\textbf{Answers:} \enskip}}
+    \renewcommand{\proof}{\cnordThree{\faLightbulb[regular]} \cnordZero{\textbf{Proof:} \enskip}}
+    %  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    %=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+    % > > > Color mode error returns
+  \else%
+    \PackageError{zjutheme}{Unknow style option `\beamer@zjutheme@mode`}{extra help}
+  \fi%
+\fi%
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Math
+%   Includes Math marcros that I use for my slides.  Careful, these definitions
+%   may conflict with other packages or your own defnitions.  Also, if you choose 
+%   to remove this package, then you will need to uncomment the font-awesome package
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\RequirePackage{zjumacros}
+
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Custom Commands
+\newcommand{\snord}{\cnordTen{sthlm}\cnordEight{NORD}}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\renewcommand{\footnotesize}{\tiny\selectfont}
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Bibliography
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\if@dobibref
+\RequirePackage{cleveref}
+% https://tex.stackexchange.com/questions/266080/cleveref-hyperlink-not-working-in-beamer/266109#266109
+\let\chyperref\cref % Save the orginal command under a new name
+\renewcommand{\cref}[1]{\hyperlink{#1}{\chyperref{#1}}} % Redefine the \cref command and explicitly add the hyperlink.
+\RequirePackage[backend=biber,style=numeric]{biblatex}
+%\setbeamertemplate{bibliography item}{
+% 	\usebeamercolor[bg]{primary}\insertbiblabel
+%}
+\addbibresource{\bibfilename}
+\else
+\fi
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   FONTS
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\RequirePackage{textcomp}
+
+% > > > Whoa! Need a large font ... here it is!
+\newcommand\Massive{\@setfontsize\VeryHuge{90}{60}}
+\RequirePackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\RequirePackage{libertinus-otf}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+\setbeamerfont*{header title}{size=\Large,series=\bfseries}
+\setbeamerfont*{header subtitle}{size=\normalsize}
+\setbeamerfont*{toc title}{size=\normalsize,series=\bfseries}
+\setbeamerfont*{toc subtitle}{size=\small}
+\setbeamerfont*{footline}{size=\fontsize{6}{6}}
+\setbeamerfont*{bibliography entry author}{size=\small,series=\normalfont}
+\setbeamerfont*{bibliography entry title}{size=\small,series=\bfseries}
+\setbeamerfont*{bibliography entry location}{size=\small,series=\normalfont}
+\setbeamerfont*{bibliography entry note}{size=\small,series=\normalfont}
+\setbeamerfont*{block title}{size=\normalsize}
+\setbeamerfont*{block body}{size=\small}
+\setbeamerfont*{block title example}{size=\normalsize}
+\setbeamerfont*{block body example}{size=\small}
+\setbeamerfont*{block title alerted}{size=\normalsize}
+\setbeamerfont*{block body alerted}{size=\small}
+
+\setbeamerfont{title}{series=\scshape, size=\LARGE,series=\bfseries}
+\setbeamerfont{subtitle}{shape=\upshape,series=\bfseries}
+
+\setbeamerfont*{author title}{series=\bfseries, shape=\upshape, size=\small}
+\setbeamerfont*{author}{series=,series=\bfseries, shape=\upshape, size=\small}
+
+\setbeamerfont*{institute title}{series=\bfseries, shape=\upshape, size=\small}
+\setbeamerfont*{institute}{series=\bfseries, shape=\upshape, size=\small}
+
+\setbeamerfont{date}{series=\bfseries, shape=\scshape, size=\small}
+\setbeamerfont{section in head/foot}{shape=\upshape,series=\bfseries}
+\setbeamerfont{number in head/foot}{shape=\upshape}
+\setbeamerfont{section page}{series=\bfseries, shape=\upshape, size=\Large}
+\setbeamerfont{subsection page}{series=\bfseries, shape=\upshape, size=\normalsize}
+\setbeamerfont{page number in head/foot}{size=\footnotesize}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Code Highlighting Style
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\if@docodeminted
+\RequirePackage{minted}
+% > > > Using Nord styles included with as of Pygments Version 2.13.0
+% > > > DEPRICATED Nord style Requires custom install: https://github.com/sbrisard/nord_pygments
+% > > > DEPRICATED Custom install https://github.com/emprice/pygments-nord
+% > > > DEPRICATED Using Anaconda https://anaconda.org/conda-forge/python-build
+\usemintedstyle{nord-darker}
+\setminted{autogobble,xleftmargin=10pt,bgcolor=\cnDarkGrey}
+\else
+\fi
+\if@docodemintedoverleaf
+\RequirePackage{minted}
+% Until Overleaf updates Pygments to at least version 2.13.0, the vim
+% color style will be available.  Of course, you can change this by using
+% \usemintedstyle command and use a supported color theme:
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usemintedstyle{vim}
+\setminted{autogobble,xleftmargin=10pt,bgcolor=\cnDarkGrey}
+\else
+\fi
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Frame Header
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% ---> Remove numbering of frames when using \framebreak
+
+\setbeamertemplate{frametitle continuation}{}
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+\setbeamertemplate{section in toc}[circle]
+% \setbeamercolor{section in toc}{bg=nordEleven,fg=white}
+\setbeamercolor{section number projected}{bg=nordEleven,fg=white}
+
+\newlength{\frametitlesidebar}
+\setlength{\frametitlesidebar}{\dimexpr(\paperwidth-\beamer@rightsidebar-4mm)}
+\setbeamertemplate{frametitle}
+{
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.5cm,ht=0.8cm,dp=0.25cm]{header primary}%
+    {\usebeamercolor*[fg]{frame title}\usebeamerfont{header title}\insertframetitle}
+    \ifx\insertframesubtitle\empty%
+      \else {\usebeamercolor*[fg]{frame mark} {\small\faTerminal} }
+      {\usebeamercolor*[fg]{frame subtitle}\usebeamerfont{header subtitle}\insertframesubtitle} \fi
+    \hfill
+  \end{beamercolorbox}%
+  \begin{tikzpicture}[overlay]
+    \draw[line width=.5mm,
+        draw=nordTen,
+        yshift=.5ex,
+        % opacity=100,
+        shade,
+        rounded corners=1pt,
+        blur shadow={
+          shadow blur steps=10,shadow blur extra rounding=3pt, 
+        shadow xshift=0ex, shadow yshift=0ex, shadow opacity=50,
+        shadow blur radius=0.3ex}] (-0.5, 0.1) -- (0.87\frametitlesidebar,0.1);
+    % \line[tape,draw=none,shade,]{}at (0,0)
+    % \node[tape,draw=none,shade,
+    %   top color=blue!40,
+    %   bottom color=blue!5,
+    %   rounded corners=1pt,
+    %   blur shadow={shadow blur steps=5,shadow blur extra rounding=1.3pt}]
+     at (5,0){\sffamily\bfseries\large Another pretty box};
+  \end{tikzpicture}
+}
+
+
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%  Frame Footer
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% \setbeamertemplate{footline}{%
+%   \hbox{%
+%     \hspace{.91\paperwidth}
+%     \begin{beamercolorbox}[
+%       wd=.1\paperwidth,
+%       ht=2ex,
+%       dp=1ex,
+%       center]{page number in head/foot}
+%       {\vspace{1ex}\usebeamerfont{page number in head/foot} \insertframenumber\ {\usebeamercolor[fg]{footnote book}\faBookOpen}\ \inserttotalframenumber}
+%     \end{beamercolorbox}%
+%   }
+% }
+
+\setbeamertemplate{footline}{}
+\setbeamertemplate{logo}{%
+    \hbox{%
+    \hspace{\paperwidth}
+    \begin{beamercolorbox}[
+      wd=.13\paperwidth,
+      ht=2ex,
+      dp=1ex,
+      center]{page number in head/foot}
+      {\vspace{-3ex}\hspace{18ex}\usebeamerfont{page number in head/foot} \insertframenumber\ {\usebeamercolor[fg]{footnote book}\faBookOpen}\ \inserttotalframenumber}
+    \end{beamercolorbox}%
+  }
+}
+\newcommand{\nologo}{\setbeamertemplate{logo}{}} % command to set the logo to nothing
+
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Footnotes
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% \hfuzz=\maxdimen % Remove warning hbox overfull (TODO) 
+
+\setbeamertemplate{footnote}{%
+  \begin{beamercolorbox}[wd=\textwidth, leftskip=0.3cm,rightskip=0.3cm]{footer text}%
+    {\usebeamerfont{footnote mark}{\usebeamercolor{footnote mark}\insertfootnotemark}{\insertfootnotetext}}
+  \end{beamercolorbox}%
+}
+
+
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+%End of Watermark
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Deck Title Page
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% Inspired from https://github.com/dennisog/beamer-purdue
+\def\titlepage{\usebeamertemplate{title page}}
+\setbeamertemplate{title page}
+{
+  % \usebackgroundtemplate{\tikz[overlay,remember picture]\node[opacity=0.3]at (current page.center){\includegraphics[width=\paperwidth]{qiushi.png}};}
+  \begin{frame}[plain]
+    \vspace{20pt}
+    \begin{minipage}[t]{1\paperwidth}
+      % \vspace*{0.1\linewidth}
+      \hbox{%
+        \begin{beamercolorbox}[
+            wd=1\linewidth,
+            ht=0.28\linewidth,
+            dp=0.02\linewidth,
+            sep=3em]{}
+          \parbox{0.8\linewidth}{%
+          {\usebeamerfont{title} \usebeamercolor[fg]{title} \noindent \inserttitle} \\
+          {\usebeamerfont{subtitle} \usebeamercolor[fg]{subtitle} \insertsubtitle}
+          }%
+        \end{beamercolorbox}
+      }%
+    \end{minipage}
+    \vspace{-10pt}
+    \hspace{12pt}
+    \begin{minipage}[c]{0.7\paperwidth}
+      {\usebeamerfont{author title}\usebeamercolor*[fg]{author title}\titleAuthor: {\usebeamerfont{author}\usebeamercolor*[fg]{author}\insertauthor}}\\[0.2cm]
+      {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleInstitute: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\insertinstitute}}\\[0.2cm]
+      % {\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}\titleMiscI: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\descMiscI}}\\[0.2cm]
+      {\usebeamerfont{date}\usebeamercolor*[fg]{date}Date:  \insertdate}
+    \end{minipage}%
+    \begin{minipage}[c]{0.18\paperwidth}
+      \vspace{-10pt}
+      \hspace{-20pt}
+      \includegraphics[width=\linewidth,keepaspectratio]{\inserttitlegraphic}
+    \end{minipage}%
+    \hfill
+    \addtocounter{framenumber}{-1}
+  \end{frame}
+}%
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Section Frame
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\if@dosectionpages
+
+  \AtBeginSection[]{
+    \begin{frame}[plain,noframenumbering]
+      \vfill
+      \begin{center}
+        {\usebeamerfont{section page}\usebeamercolor*[fg]{section page}\insertsectionhead}
+      \end{center}
+      \par%
+      \vfill%
+    \end{frame}
+  }
+  \AtBeginSubsection[]{
+    \begin{frame}[plain,noframenumbering]
+      \vfill
+      \begin{center}
+        {\usebeamerfont{section page}\usebeamercolor*[fg]{section page}\insertsectionhead}
+        \par%
+        {\usebeamerfont{subsection page}\usebeamercolor*[fg]{subsection page}\insertsubsectionhead}
+      \end{center}
+      \par%
+      \vfill%
+    \end{frame}
+  }
+\else
+\fi
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Table of Contents
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\setbeamertemplate{section in toc}[circle unnumbered]
+\setbeamertemplate{subsection in toc}[box unnumbered]
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Example Environment
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\renewenvironment{example}[1]{
+  \textcolor{secondary}{#1}
+}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%  Blocks
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% > > > Normal Block
+\setbeamertemplate{block begin}
+{
+\par\vskip\medskipamount%
+\begin{beamercolorbox}[colsep*=2mm]{block title}
+  \usebeamerfont*{block title}\insertblocktitle%
+\end{beamercolorbox}%
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title}
+{}
+{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body}%
+\begin{beamercolorbox}[colsep*=2mm,vmode]{block body}%
+\ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+% > > > Example Block
+\setbeamertemplate{block example begin}
+{
+\par\vskip\medskipamount%
+\begin{beamercolorbox}[colsep*=2mm]{block title example}
+  \usebeamerfont*{block title example}\insertblocktitle%
+\end{beamercolorbox}%
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title example}
+{}
+{\ifbeamercolorempty[bg]{block body example}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body example}%
+\begin{beamercolorbox}[colsep*=2mm,vmode]{block body example}%
+\ifbeamercolorempty[bg]{block body example}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+% > > > Alert Block
+\setbeamertemplate{block alerted begin}
+{
+\par\vskip\medskipamount%
+\begin{beamercolorbox}[colsep*=2mm]{block title alerted}
+  \usebeamerfont*{block title alerted}\insertblocktitle%
+\end{beamercolorbox}%
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title alerted}
+{}
+{\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body alerted}%
+\begin{beamercolorbox}[colsep*=2mm,vmode]{block body alerted}%
+\ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Hide navigation buttons
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\setbeamertemplate{navigation symbols}{}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%   Custom Margins
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+%  END =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\mode<all>
+
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+% End of file `beamerthemesthlmnord.sty'.
+%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+\usebackgroundtemplate{
+  \tikz[overlay,remember picture]
+  \node[opacity=1, at=(current page.north east),anchor=north east,inner sep=0.50em] {
+    \includegraphics[height=1.1cm,width=1.1cm]{logo.pdf}};
+  \tikz[overlay,remember picture]\node[opacity=0.03]at (current page.center){\includegraphics[width=\paperwidth]{qiushi3.png}};
+}
+
+\AtBeginSection[allowframebreaks]{
+	\begin{frame}[allowframebreaks]%
+    \transfade%淡入淡出效果
+    \vspace{-0.56cm}
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
+    \pagenumbering{gobble}
+		\frametitle{Table of contents}%
+		\textbf{\tableofcontents[sectionstyle=show/shaded,hideallsubsections]}
+    \addtocounter{framenumber}{-1}  %目录页不计算页码
+    \pagenumbering{}
+	\end{frame}%
+}
+
+\AtBeginSubsection[allowframebreaks]{
+	% \begin{frame}%
+	% 	\frametitle{Table of contents}%
+	% 	\textbf{\tableofcontents[currentsection, currentsubsection]} %
+	% \end{frame}%
+  % \addtocounter{framenumber}{-1}  %目录页不计算页码
+}
+
+\addtobeamertemplate{background canvas}{\transfade[duration=1]}{}
+% \addtobeamertemplate{background canvas}{\transfade}{}
